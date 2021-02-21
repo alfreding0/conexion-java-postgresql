@@ -3,6 +3,7 @@ package sql;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
@@ -105,6 +106,25 @@ public final class ConexionExample{
     
     
     
-    
+    public void mostrarDatosPorConsola(ResultSet rs){
+        try {
+            ResultSetMetaData md = rs.getMetaData();
+            int n_columns = md.getColumnCount();
+            
+            for (int i = 1; i <= n_columns; i++) {
+                System.out.print( md.getColumnName(i) + "\t" );
+            }
+            System.out.println("\n-------------------------------------------------------");
+            
+            while(rs.next()){
+                for (int i = 1; i <= n_columns; i++) {
+                    System.out.print( rs.getObject(i) + " " );
+                }
+                System.out.println("");
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error en mostrar datos!!\n" + ex.getMessage());
+        }
+    }
 }
 /** @author alfreding0*/
