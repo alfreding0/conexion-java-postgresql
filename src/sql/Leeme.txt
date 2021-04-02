@@ -5,3 +5,9 @@ PASOS PARA CONFIGURAR LA CLASE CONEXION
 
 2. Luego escriba dentro de la clase los datos de su usuario y contraseña para
     conectarse a su base de datos en postgresql.
+
+
+
+PARA PROBAR INSERCION Y CONSULTAS EN UNA TABLA
+Ejecutar el script para crear una tabla usuario que está en el archivo
+create_tables.sql en el package sql.

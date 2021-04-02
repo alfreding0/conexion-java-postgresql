@@ -8,9 +8,9 @@ public class Main {
     public static void main(String[] args) {
         Conexion con = new Conexion();
         
-        String comando = "INSERT INTO usuario (nombre, clave) VALUES ('alfreding0', 'XD')";
+        String comando = "INSERT INTO usuario (nombre, clave) VALUES ('alf', 'XD')";
         con.ejecutarComando(comando);
-//        String comando = "UPDATE usuario SET nombre = 'alfreding0-01' WHERE id = 1; ";
+//        String comando = "UPDATE usuario SET nombre = 'alf-01' WHERE id = 1; ";
 //        con.ejecutarComando(comando);
 //        String comando = "DELETE FROM usuario WHERE id = 2; ";
 //        con.ejecutarComando(comando);

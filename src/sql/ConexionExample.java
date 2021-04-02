@@ -28,10 +28,14 @@ public final class ConexionExample{
     
     
     public ConexionExample(){
-        conectar(); 
+        this.conectar(); 
     }
     
-    
+    /**
+     * Hace la conexion con el servidor de bases de datos, con las credenciales de <br>
+     * usuario y contraseña; para que a partir de esa conexion o sesion lograda <br>
+     * se pueda usar para ejecutar comando y consultas a la base de datos.
+     */
     public void conectar(){
         try {
             Class.forName("org.postgresql.Driver");
@@ -42,6 +46,13 @@ public final class ConexionExample{
         }
     }
     
+    /**
+     * Siempre que se abra una conexion o sesión con el servidor de bases de datos <br>
+     * es muy importante desconectarse de la misma después de hacer las operaciones
+     * de inserts, updates, deletes o selects.
+     * Hacer la desconexion optimiza todo el sistema porque libera una sesión en el
+     * servidor.
+     */
     public void desconectar(){
         if(getConnection()!=null){
             try {
@@ -105,10 +116,15 @@ public final class ConexionExample{
     }
     
     
-    
-    public void mostrarDatosPorConsola(ResultSet rs){
+    /**
+     * Muestra una consulta cualquiera por la Salida o consola, sin necesidad <br>
+     * de mostrarlo en una tabla.
+     * @param resultQuery recibe el resultado de la consulta que normalmente <br>
+     * se lo guarda en un objeto de tipo ResultSet al hacer la consulta.
+     */
+    public void mostrarDatosPorConsola(ResultSet resultQuery){
         try {
-            ResultSetMetaData md = rs.getMetaData();
+            ResultSetMetaData md = resultQuery.getMetaData();
             int n_columns = md.getColumnCount();
             
             for (int i = 1; i <= n_columns; i++) {
@@ -116,9 +132,9 @@ public final class ConexionExample{
             }
             System.out.println("\n-------------------------------------------------------");
             
-            while(rs.next()){
+            while(resultQuery.next()){
                 for (int i = 1; i <= n_columns; i++) {
-                    System.out.print( rs.getObject(i) + " " );
+                    System.out.print( resultQuery.getObject(i) + " " );
                 }
                 System.out.println("");
             }
