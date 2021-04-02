@@ -80,14 +80,21 @@ public final class ConexionExample{
      * También soporta ejecución de instrucciones DDL. <br>
      * <br>
      * Todas estas instrucciones deben enviarse como una cadena String. <br>
-     * @param comando
+     * @param comando recibe un String que es el script o comando sql que se desea ejecutar.
+     * <br>
+     * @return retorna un booleano según lo que ocurra con la ejecución del comando. <br>
+     * Cuando la ejecución es exitosa retorna true.
+     * Si la ejecución falla retorna false.
+     * Esto puede ayudar a mostrar un mensaje al usuario para darle a conocer la situación.
      */
-    public void ejecutarComando(String comando) {
+    public boolean ejecutarComando(String comando) {
         try {
             Statement Cmd = cnx.createStatement();
             Cmd.execute(comando);
+            return true;
         }catch (SQLException err) {
             System.out.println("Error al intentar ejecutar comando: " + err);
+            return false;
         }
     }
     
@@ -101,8 +108,8 @@ public final class ConexionExample{
      * <br>
      * Todas estas instrucciones deben enviarse como una cadena String.<br>
      * El resultado de retorno es un objeto ResultSet.<br>
-     * @param consulta
-     * @return 
+     * @param consulta recibe un String que es el script o consulta sql que se desea ejecutar.
+     * @return el retorno de esta función es un objeto ResultSet que es en donde se almacenan los datos de la consulta.
      */
     public ResultSet ejecutarConsulta(String consulta){
         ResultSet res = null;
@@ -118,9 +125,8 @@ public final class ConexionExample{
     
     /**
      * Muestra una consulta cualquiera por la Salida o consola, sin necesidad <br>
-     * de mostrarlo en una tabla.
-     * @param resultQuery recibe el resultado de la consulta que normalmente <br>
-     * se lo guarda en un objeto de tipo ResultSet al hacer la consulta.
+     * de mostrarlo en una tabla.<br>
+     * @param resultQuery recibe el resultado de la consulta que normalmente se lo guarda en un objeto de tipo ResultSet al hacer la consulta.
      */
     public void mostrarDatosPorConsola(ResultSet resultQuery){
         try {
