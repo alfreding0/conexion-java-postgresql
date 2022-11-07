@@ -1,5 +1,7 @@
 package sql;
-/** @author alfreding0*/
+/** @author alfreding0
+* FROM https://github.com/alfreding0/conexion-java-postgresql
+*/
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
